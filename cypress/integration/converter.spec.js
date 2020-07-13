@@ -18,14 +18,15 @@ describe("Converter  test", () => {
       .select("AUD")
       .get("#2")
       .select("USD")
+      .wait(500)
       .get(inputSelector)
       .eq(1) //DD: select second element
       .should(($resultInput) => {
-        // expect($resultInput).to.have.value("2000");
         expect($resultInput).to.be.visible;
-        const number = parseFloat($resultInput.value);
+        const number = parseFloat($resultInput.val());
         console.log($resultInput);
-        // expect(number).to.be.lte(2000);
+        console.log(number);
+        expect(number).to.be.lte(2000);
       });
   });
 });
