@@ -8,3 +8,8 @@ and fetching data from https://api.openweathermap.org/data/2.5/
 ![image](ui.png)
 ![image](uiw.png)
 ![image](uiw1.png)
+
+## Cypress tests
+
+![image](cyconverter.png)
+![image](cyweather.png)

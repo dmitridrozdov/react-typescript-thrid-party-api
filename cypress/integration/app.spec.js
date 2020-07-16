@@ -29,4 +29,13 @@ describe("Converter  test", () => {
         expect(number).to.be.lte(2000);
       });
   });
+  it("Check weather", () => {
+    cy.visit("http://localhost:3000/weather")
+      .get(".search-bar")
+      .type("Sydney{enter}")
+      .get(".location")
+      .should(($location) => {
+        expect($location).to.contain("Sydney, AU");
+      });
+  });
 });
