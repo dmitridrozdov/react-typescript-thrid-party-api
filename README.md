@@ -1,3 +1,11 @@
+## Run
+
+`npm start`
+
+## Run Cypress tests
+
+`npm run copen`
+
 # Currency converter
 
 React + Typescript application which is using api from https://api.exchangeratesapi.io/latest to convert from one currency to another
