@@ -29,6 +29,7 @@ describe("Converter  test", () => {
         expect(number).to.be.lte(2000);
       });
   });
+
   it("Check weather", () => {
     cy.visit("http://localhost:3000/weather")
       .get(".search-bar")
@@ -37,5 +38,18 @@ describe("Converter  test", () => {
       .should(($location) => {
         expect($location).to.contain("Sydney, AU");
       });
+  });
+
+  it("Check daily challenge", () => {
+    cy.visit("http://localhost:3000/daily")
+      .get("#inputlist")
+      .type("7, 6, 5, 4, 3")
+      .get("#expectedsum")
+      .type("20")
+      .get("button")
+      .click();
+    // .should(($location) => {
+    //   expect($location).to.contain("Sydney, AU");
+    // });
   });
 });

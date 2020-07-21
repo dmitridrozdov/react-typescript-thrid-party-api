@@ -59,11 +59,13 @@ export const DailyComponent: React.FC = () => {
       <h1>Daily Coding Challenge</h1>
       <div className="dailyBlock">
         <DailyInputComponent
+          id="inputlist"
           inputName="Input List (example: 10, 1, 4, 7)"
           inputValue={inputValue}
           onChange={handleInputValueChange}
         />
         <DailyInputComponent
+          id="expectedsum"
           inputName="Expected Sum (example: 17)"
           inputValue={expectedSum}
           onChange={handleExpectedSumChange}
@@ -73,7 +75,9 @@ export const DailyComponent: React.FC = () => {
             Verify
           </button>
         </p>
-        <p className="pDailyInput">Result: {result}</p>
+        <p className="pDailyInput">
+          Result: <span className="result">{result}</span>
+        </p>
       </div>
     </div>
   );
