@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { DailyInputComponent } from "./DailyInputComponent";
 import "./DailyComponent.css";
-// import { verifySum } from "./daily1";
-import { calculateProductList } from "./daily2";
+import { getFirstIntegerByRule } from "./daily3";
 
 export const DailyComponent: React.FC = () => {
   const [inputValue, setInputValue] = useState("");
@@ -18,7 +17,7 @@ export const DailyComponent: React.FC = () => {
   };
 
   const runVerification = () => {
-    let result = calculateProductList(inputValue);
+    let result = getFirstIntegerByRule(inputValue);
     setResult(String(result));
   };
 
