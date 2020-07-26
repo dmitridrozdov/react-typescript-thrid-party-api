@@ -21,6 +21,8 @@ export const DailyComponent: React.FC = () => {
     setResult(String(result));
   };
 
+  const onFocus = (e: React.ChangeEvent<HTMLInputElement>) => {};
+
   return (
     <div>
       <h1>Daily Coding Challenge</h1>
@@ -30,12 +32,14 @@ export const DailyComponent: React.FC = () => {
           inputName="Input String 1: "
           inputValue={inputValue}
           onChange={handleInputValueChange}
+          onFocus={onFocus}
         />
         <DailyInputComponent
           id="expectedsum"
           inputName="Input String 2: "
           inputValue={expectedSum}
           onChange={handleExpectedSumChange}
+          onFocus={onFocus}
         />
         <p>
           <button className="input" onClick={runVerification}>

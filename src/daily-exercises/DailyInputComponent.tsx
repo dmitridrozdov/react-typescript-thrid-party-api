@@ -4,7 +4,8 @@ interface DailyInputComponentProps {
   id: string;
   inputName: string;
   inputValue: string;
-  onChange: (event: ChangeEvent<HTMLInputElement>) => void;
+  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  onFocus: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 
 export const DailyInputComponent: React.FC<DailyInputComponentProps> = ({
@@ -12,6 +13,7 @@ export const DailyInputComponent: React.FC<DailyInputComponentProps> = ({
   inputName,
   inputValue,
   onChange,
+  onFocus,
 }) => {
   return (
     <div>
@@ -22,6 +24,7 @@ export const DailyInputComponent: React.FC<DailyInputComponentProps> = ({
           className="input"
           value={inputValue}
           onChange={onChange}
+          onFocus={onFocus}
         ></input>
       </p>
     </div>

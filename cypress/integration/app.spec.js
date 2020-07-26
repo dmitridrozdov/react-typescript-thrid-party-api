@@ -48,8 +48,21 @@ describe("Converter  test", () => {
       .type("20")
       .get("button")
       .click();
-    // .should(($location) => {
-    //   expect($location).to.contain("Sydney, AU");
-    // });
+  });
+
+  it("Check email validation", () => {
+    cy.visit("http://localhost:3000/validate")
+      .get("#inputEmail")
+      .type("hello")
+      .get("#password")
+      .click()
+      .get("#validationSign")
+      .should(($res) => {
+        expect($res).to.be.visible;
+      })
+      .get("#validationDot")
+      .should(($res) => {
+        expect($res).to.be.visible;
+      });
   });
 });

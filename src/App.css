@@ -132,3 +132,8 @@ select {
 .select-options li[rel="hide"] {
   display: none;
 }
+
+.validation-failed {
+  color: red;
+  font-size: 20px;
+}
