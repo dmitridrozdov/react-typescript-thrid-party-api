@@ -10,18 +10,21 @@ export const InputValidation: React.FC = () => {
     setInputValue(e.target.value);
   };
 
-  const onFocusPassword = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (!inputValue.includes("@")) {
-      setValidationSign("Email should contain '@'");
+  const setFocusState = (
+    setState: (value: React.SetStateAction<string>) => void,
+    checkMsg: string,
+    inclStr: string
+  ) => {
+    if (!inputValue.includes(inclStr)) {
+      setState("Email should contain " + checkMsg);
     } else {
-      setValidationSign("");
+      setState("");
     }
+  };
 
-    if (!inputValue.includes(".")) {
-      setValidationDot("Email should contain '.'");
-    } else {
-      setValidationDot("");
-    }
+  const onFocusPassword = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFocusState(setValidationSign, "@", "@");
+    setFocusState(setValidationDot, ".", ".");
   };
 
   const onFocusEmpty = (e: React.ChangeEvent<HTMLInputElement>) => {};
