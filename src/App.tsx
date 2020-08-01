@@ -8,6 +8,7 @@ import { WeatherComponent } from "./WeatherComponent";
 import { NoteComponent } from "./NoteComponent";
 import { InputValidation } from "./InputValidation";
 import { DailyComponent } from "./daily-exercises/DailyComponent";
+import { UseContextComponent } from "./use-context/UseContextComponent";
 
 const App: React.FC = () => {
   return (
@@ -19,6 +20,7 @@ const App: React.FC = () => {
         <Route path="/note" exact component={NoteComponent} />
         <Route path="/daily" exact component={DailyComponent} />
         <Route path="/validate" exact component={InputValidation} />
+        <Route path="/context" exact component={UseContextComponent} />
       </Switch>
     </BrowserRouter>
   );
