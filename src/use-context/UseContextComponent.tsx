@@ -8,12 +8,10 @@ const colors = {
 };
 
 export const ColorContext = React.createContext(colors.blue);
-// export const ThemeContext = React.createContext(true);
 
 export const UseContextComponent: React.FC = () => {
   const [darkTheme, setDarkTheme] = useState(colors.blue);
   const toggleTheme = () => {
-    // setDarkTheme(prevDarkTheme => !prevDarkTheme)
     if (darkTheme == colors.blue) setDarkTheme(colors.yellow);
     else setDarkTheme(colors.blue);
   };
