@@ -32,3 +32,5 @@ Description: Probably the user should be highlighted or search by the user shoul
 
 ## 10. [Major] Information button doesn't work
 ![image](infobutton.png)
+
+## 11. [Major] There are some API issues with /v1/user PUT and POST requests (cancelled)
