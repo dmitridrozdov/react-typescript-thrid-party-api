@@ -21,3 +21,7 @@ and fetching data from https://api.openweathermap.org/data/2.5/
 
 ![image](cyconverter.png)
 ![image](cyweather.png)
+
+## Vodafone challange (SuprHeroes and SuperVillain)
+
+Execute `vodafone.spec.js`
