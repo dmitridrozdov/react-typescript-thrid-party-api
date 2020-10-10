@@ -1,24 +1,57 @@
-describe("CBA  test", () => {
+function getClick(cssSelector) {
+    cy.get(cssSelector).click()
+}
+
+let cssLeaderLabel = '.col-lg-12 > .option-label'
+
+describe("vodafone test", () => {
     beforeEach(() => {
       cy.visit("https://responsivefight.herokuapp.com/");
     });
   
-    it("login uer", () => {
+    it("e2e test", () => {
+        var d = new Date();
+        var timestamp = d.getTime();
         cy.get('#worrior_username')
-        // .click()
-        // .get("#header-search-input-box")
-        .type("CYPRESS SUPER TEST___________________________")
-        .get('#warrior')
-        .click()
-        .get('#start')
-        .click()
-        // .should("have.class", "header-search-input")
-        // .should(($input_search) => {
-        //   expect($input_search).to.be.visible;
-        //   expect($input_search).to.have.class("header-search-input");
-        //   expect($input_search).to.have.value("travel");
-        //   expect($input_search).to.have.attr("placeholder", "Start typing...");
-        //   expect($input_search).to.have.attr("type", "search");
-        // });
+        .type("CYPRESS SUPER TEST " + timestamp)
+        
+        var e2eSequence = 
+            [
+                '#warrior', 
+                '#start', 
+                '#bus', 
+                '#bus_timer_start', 
+                '#bus_answer_1', 
+                '#close_correct_modal_btn',
+                '#restaurant_timer_start',
+                '#restaurant_answer_1',
+                '#close_correct_modal_btn',
+                '#start',
+                '#office_answer_1',
+                '#close_modal_btn_1',
+                '#bus_timer_start',
+                '#bus_answer_2',
+                '#close_correct_modal_btn',
+                '#restaurant_timer_start',
+                '#restaurant_answer_2',
+                '#close_correct_modal_btn',
+                '#start',
+                '#office_answer_1',
+                '#close_modal_btn_1',
+                '#bus_timer_start',
+                '#bus_answer_1',
+                '#close_correct_modal_btn',
+                '#restaurant_timer_start',
+                '#restaurant_answer_2',
+                '#close_correct_modal_btn',
+                '#start',
+                '#office_answer_2',
+                '#leaderboard_link',   
+            ]
+
+        e2eSequence.forEach(getClick);
+
+        cy.get(cssLeaderLabel).should('have.text', 'COVID-19 THE GAME - LEADERBOARD');
+
     });
   });
