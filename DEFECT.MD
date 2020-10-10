@@ -13,7 +13,6 @@ Description: Should be possible to have the ability to log in/log out from the s
 
 ## 4. [Minor] The interface on the start screen is not user friendly
 Description: Should be possible to click on all area, not just a button below
-
 ![image](main-area-click.png)
 
 ## 5. [Major] No information about current status of the game
@@ -29,5 +28,7 @@ Description: Probably the user should be highlighted or search by the user shoul
 ## 8. [Major] Button continue fighting doesn't work or not appropriate after the user finished his first game
 
 ## 9. [Major] Negative score shouln't be acceptable for the system
-
 ![image](negativescore.png)
+
+## 10. [Major] Information button doesn't work
+![image](infobutton.png)
