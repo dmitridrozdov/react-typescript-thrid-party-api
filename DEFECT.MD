@@ -22,3 +22,12 @@ Description: Should be visible overall number of the points and not just latest 
 ## 6. [Major] On the final screen with "Check your score" progress bar is not appropriate
 Description: Nothing to measure on the final screen. Any notifications on that screen should be removed
 ![image](checkscore.png)
+
+## 7. [Major] Final score results are not user friendly
+Description: Probably the user should be highlighted or search by the user should be present
+
+## 8. [Major] Button continue fighting doesn't work or not appropriate after the user finished his first game
+
+## 9. [Major] Negative score shouln't be acceptable for the system
+
+![image](negativescore.png)
