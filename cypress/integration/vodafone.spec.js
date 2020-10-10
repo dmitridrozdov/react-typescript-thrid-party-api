@@ -1,8 +1,19 @@
-function getClick(cssSelector) {
-    cy.get(cssSelector).click()
-}
+
 
 let cssLeaderLabel = '.col-lg-12 > .option-label'
+let cssCloseButton = '#close_correct_modal_btn'
+let cssStaticLabel = '#staticBackdropLabel'
+
+
+function getClickCheck(cssSelector) {
+    cy.get(cssSelector).click();
+    console.log(cssSelector);
+    if(cssStaticLabel == cssCloseButton) {
+        cy.get(cssStaticLabel).should('have.text', 'That is correct!');
+    }  
+}
+
+
 
 describe("vodafone test", () => {
     beforeEach(() => {
@@ -49,7 +60,7 @@ describe("vodafone test", () => {
                 '#leaderboard_link',   
             ]
 
-        e2eSequence.forEach(getClick);
+        e2eSequence.forEach(getClickCheck);
 
         cy.get(cssLeaderLabel).should('have.text', 'COVID-19 THE GAME - LEADERBOARD');
 
