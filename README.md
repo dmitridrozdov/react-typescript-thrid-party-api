@@ -15,3 +15,7 @@ Open `DEFECT.MD`
 # Vodafone related tests
 
 Execute `vodafone.spec.js`
+
+# Run all tests and add to CI/CD pipeline
+
+`npx cypress run`

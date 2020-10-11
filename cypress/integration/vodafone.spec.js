@@ -1,16 +1,25 @@
-
-
 let cssLeaderLabel = '.col-lg-12 > .option-label'
 let cssCloseButton = '#close_correct_modal_btn'
-let cssStaticLabel = '#staticBackdropLabel'
+let cssStart = '#start'
+let cssBusStart = '#bus_timer_start'
 
+
+function checkBasedOnCSSSelector(cssSelector) {
+    switch(cssSelector) {
+        case cssCloseButton:
+            cy.get(cssCloseButton).should('have.text', 'Try the next battle');
+          break;
+        case cssBusStart:
+            cy.get(cssBusStart).should('have.text', 'Start');
+          break;
+        default:
+      }
+}
 
 function getClickCheck(cssSelector) {
+    checkBasedOnCSSSelector(cssSelector);
     cy.get(cssSelector).click();
     console.log(cssSelector);
-    if(cssStaticLabel == cssCloseButton) {
-        cy.get(cssStaticLabel).should('have.text', 'That is correct!');
-    }  
 }
 
 
@@ -23,39 +32,48 @@ describe("vodafone test", () => {
     it("e2e test", () => {
         var d = new Date();
         var timestamp = d.getTime();
+
+        var date = new Date();
+
+        weekdayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+        monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+        var dateString = weekdayNames[date.getDay()] + " " 
+            + date.getHours() + ":" + ("00" + date.getMinutes()).slice(-2) + " " 
+            + date.getDate() + " " + monthNames[date.getMonth()] + " " + date.getFullYear();
+
         cy.get('#worrior_username')
-        .type(" ")// + timestamp)
+        .type("LEO MESSI THE BEST QA " + dateString)
         
         var e2eSequence = 
             [
                 '#warrior', 
-                '#start', 
+                cssStart, 
                 '#bus', 
-                '#bus_timer_start', 
+                cssBusStart, 
                 '#bus_answer_1', 
-                '#close_correct_modal_btn',
+                cssCloseButton,
                 '#restaurant_timer_start',
                 '#restaurant_answer_1',
-                '#close_correct_modal_btn',
-                '#start',
+                cssCloseButton,
+                cssStart,
                 '#office_answer_1',
                 '#close_modal_btn_1',
-                '#bus_timer_start',
+                cssBusStart,
                 '#bus_answer_2',
-                '#close_correct_modal_btn',
+                cssCloseButton,
                 '#restaurant_timer_start',
                 '#restaurant_answer_2',
-                '#close_correct_modal_btn',
-                '#start',
+                cssCloseButton,
+                cssStart,
                 '#office_answer_1',
                 '#close_modal_btn_1',
-                '#bus_timer_start',
+                cssBusStart,
                 '#bus_answer_1',
-                '#close_correct_modal_btn',
+                cssCloseButton,
                 '#restaurant_timer_start',
                 '#restaurant_answer_2',
-                '#close_correct_modal_btn',
-                '#start',
+                cssCloseButton,
+                cssStart,
                 '#office_answer_2',
                 '#leaderboard_link',   
             ]
