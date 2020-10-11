@@ -34,3 +34,9 @@ Description: Probably the user should be highlighted or search by the user shoul
 ![image](infobutton.png)
 
 ## 11. [Major] There are some API issues with /v1/user PUT and POST requests (cancelled)
+
+## 12. [Major] The system is not recording result when the user name too long
+Description: The user name unique and reasonably short
+
+## 13. [Major] The system shouldn't accept a blank user name
+![image](emptyuser.png)

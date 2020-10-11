@@ -24,7 +24,7 @@ describe("vodafone test", () => {
         var d = new Date();
         var timestamp = d.getTime();
         cy.get('#worrior_username')
-        .type("CYPRESS SUPER TEST " + timestamp)
+        .type(" ")// + timestamp)
         
         var e2eSequence = 
             [
