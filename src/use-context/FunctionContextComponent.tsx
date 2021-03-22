@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import { ChildFunctionComponent } from "./ChildFunctionComponent";
 
 export const FunctionContextComponent: React.FC = () => {
