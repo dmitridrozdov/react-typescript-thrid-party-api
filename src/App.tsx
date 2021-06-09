@@ -15,8 +15,9 @@ const App: React.FC = () => {
   return (
     <BrowserRouter>
       <Switch>
-        <Route path="/" exact component={CurrencyConverter} />
-        <Route path="/todo" exact component={TodoComponenet} />
+        {/* <Route path="/" exact component={CurrencyConverter} /> */}
+        {/* <Route path="/todo" exact component={TodoComponenet} /> */}
+        <Route path="/" exact component={TodoComponenet} />
         <Route path="/weather" exact component={WeatherComponent} />
         <Route path="/note" exact component={NoteComponent} />
         <Route path="/daily" exact component={DailyComponent} />
