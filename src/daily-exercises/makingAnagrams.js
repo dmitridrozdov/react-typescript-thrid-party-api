@@ -1,7 +1,11 @@
-const
+const checkCharInString = (ch, str) => {
+    return str.includes(ch)
+}
 
 const makeAnagram = (a, b) => {
-    return 'hellou'
+    let str = 'asdf'
+    let ch = 'm'
+    return checkCharInString(ch, str)
 }
 
 let a = 'cde'
