@@ -2,7 +2,7 @@ const pattern = 'SOS'
 
 const verifyPattern = (p) => {
     let result = 0
-    for(i = 0; i <= 2; i++) {
+    for(let i = 0; i <= 2; i++) {
         if(p[i] != pattern[i]) {
             result++
         }
