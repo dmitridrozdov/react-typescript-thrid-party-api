@@ -1,16 +1,47 @@
 const recursiveCutSticks = (sticks, result) => {
-    const currentRes = sticks.length
-    if(currentRes <= 1) { return result.push(currentRes) }
-    const firstElement = sticks[0]
-    const cuttedSticksArr = sticks.map(x => x - firstElement).filter(x => x != 0)
-    let updatedResult = result.push(cuttedSticksArr.length)
-    return recursiveCutSticks(cuttedSticksArr, updatedResult)
+    if(sticks.length <= 1) { 
+        return result
+    }
+    const cuttedSticksArr = sticks.map(x => x - sticks[0]).filter(x => x != 0)
+    result.push(cuttedSticksArr.length)
+    console.log(cuttedSticksArr)
+    console.log(cuttedSticksArr.length)
+    return recursiveCutSticks(cuttedSticksArr, result)
 }
 
 const cutTheSticks = (arr) => {
     const sortedArr = arr.sort()
-    return recursiveCutSticks(sortedArr, [])
+    let result = []
+    result.push(arr.length)
+    return recursiveCutSticks(sortedArr, result)
 }
 
-const arr = [5, 4, 4, 2, 2, 8]
+function cutTheSticks1(arr) {
+    let result = [];
+
+    while (arr.length > 0) {
+        result.push(arr.length);
+
+        arr.sort((a, b) => (a - b));
+
+        let front = arr[0];
+
+        arr.reduce((target, value, index) => {
+            arr[index] -= front;
+
+            return target;
+        }, []);
+
+        let remove = arr.lastIndexOf(0) + 1;
+
+        arr.splice(0, remove);
+    }
+
+    return result;
+}
+
+// const arr = [5, 4, 4, 2, 2, 8]
+// const arr = [1, 2, 3, 4, 3, 3, 2, 1]
+// const arr = [1, 13, 3, 8, 14, 9, 4, 4]
+const arr = [2,2,1,1]
 console.log(cutTheSticks(arr))
