@@ -8,10 +8,27 @@ const returnCalc = (val1, val2) => {
 }
 
 const countTopicsByPair = (n1, n2, topics) => {
-    const topicsIntArr1 = getIntArray(topics[n1 - 1])
-    const topicsIntArr2 = getIntArray(topics[n2 - 1])
+    const topicsIntArr1 = getIntArray(topics[n1])
+    const topicsIntArr2 = getIntArray(topics[n2])
     const result = topicsIntArr1.map((x, index) => returnCalc(x, topicsIntArr2[index]))
     return result.reduce((a, b) => a + b, 0)
+}
+
+const calculatePermutationForFirst = (topics) => {
+    let result = []
+    for(let i = 1; i < topics.length; i++) {
+        result.push(countTopicsByPair(0, i, topics))
+    }
+    return result
+}
+
+const recursivePermutation = (topics, result) => {
+    if(topics.length === 1) { return [].concat(...result) }
+    else {
+        result.push(calculatePermutationForFirst(topics))
+        topics.shift()
+        return recursivePermutation(topics, result)
+    }
 }
 
 const acmTeam = (topics) => {
@@ -19,10 +36,10 @@ const acmTeam = (topics) => {
     const attendees = attAndTopics[0]
     const numTopics = attAndTopics[1]
     topics.shift()
-    return topics
+    return recursivePermutation(topics, [])
 }
 
 const topics = ['3 5', '10101', '11110', '00010']
 console.log(acmTeam(topics))
 
-console.log(countTopicsByPair(2,3, topics))
+// console.log(calculatePermutationForFirst(topics))
