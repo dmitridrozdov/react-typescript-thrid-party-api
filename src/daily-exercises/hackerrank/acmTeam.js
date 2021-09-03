@@ -25,4 +25,4 @@ const acmTeam = (topics) => {
 const topics = ['3 5', '10101', '11110', '00010']
 console.log(acmTeam(topics))
 
-console.log(countTopicsByPair(1,3, topics))
+console.log(countTopicsByPair(2,3, topics))
