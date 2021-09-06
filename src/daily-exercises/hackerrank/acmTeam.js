@@ -22,10 +22,19 @@ const calculatePermutationForFirst = (topics) => {
     return result
 }
 
-const recursivePermutation = (topics, result) => {
+const recursiveCalculation = (topics, result) => {
     if(topics.length === 1) { return [].concat(...result) }
     else {
         result.push(calculatePermutationForFirst(topics))
+        topics.shift()
+        return recursiveCalculation(topics, result)
+    }
+}
+
+const recursivePermutation = (topics, result) => {
+    if(topics.length === 1) { return [].concat(...result) }
+    else {
+        result.push(recursiveCalculation(topics, []))
         topics.shift()
         return recursivePermutation(topics, result)
     }
