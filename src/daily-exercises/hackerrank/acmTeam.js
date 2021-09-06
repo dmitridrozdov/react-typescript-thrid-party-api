@@ -48,6 +48,7 @@ const acmTeam = (topics) => {
     const numTopics = attAndTopics[1]
     topics.shift()
     const arrayResult = recursivePermutation(topics, [])
+    console.log('arrayResult: ' + arrayResult)
     const maxAttendees = Math.max(...arrayResult)
     let count = 0
     arrayResult.forEach(x => {
@@ -56,7 +57,8 @@ const acmTeam = (topics) => {
     return [maxAttendees, count]
 }
 
-const topics = ['3 5', '10101', '11110', '00010']
+// const topics = ['3 5', '10101', '11110', '00010']
+const topics = ['4 5', '10101', '11100', '11010', '00101']
 console.log(acmTeam(topics))
 
 // console.log(calculatePermutationForFirst(topics))
