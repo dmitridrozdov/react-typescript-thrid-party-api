@@ -47,7 +47,13 @@ const acmTeam = (topics) => {
     const attendees = attAndTopics[0]
     const numTopics = attAndTopics[1]
     topics.shift()
-    return recursivePermutation(topics, [])
+    const arrayResult = recursivePermutation(topics, [])
+    const maxAttendees = Math.max(...arrayResult)
+    let count = 0
+    arrayResult.forEach(x => {
+        if(x === maxAttendees) { count += 1 }
+    });
+    return [maxAttendees, count]
 }
 
 const topics = ['3 5', '10101', '11110', '00010']
