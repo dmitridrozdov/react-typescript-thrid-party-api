@@ -15,6 +15,7 @@ const countTopicsByPair = (n1, n2, topics) => {
 }
 
 const calculatePermutationForFirst = (topics) => {
+    console.log('current topics: ' + topics)
     let result = []
     for(let i = 1; i < topics.length; i++) {
         result.push(countTopicsByPair(0, i, topics))
@@ -31,21 +32,29 @@ const recursiveCalculation = (topics, result) => {
     }
 }
 
-const recursivePermutation = (topics, result) => {
-    if(topics.length === 1) { return [].concat(...result) }
-    else {
-        result.push(recursiveCalculation(topics, []))
-        topics.shift()
-        return recursivePermutation(topics, result)
-    }
-}
+// const recursivePermutation = (topics, result) => {
+//     if(topics.length === 1) { return [].concat(...result) }
+//     else {
+//         result.push(recursiveCalculation(topics, []))
+//         topics.shift()
+//         return recursivePermutation(topics, result)
+//     }
+// }
 
 const acmTeam = (topics) => {
     const attAndTopics = topics[0].split(' ')
     const attendees = attAndTopics[0]
     const numTopics = attAndTopics[1]
     topics.shift()
-    return recursivePermutation(topics, [])
+
+    let result = []
+    result.push(recursiveCalculation(topics, []))
+    // topics.shift()
+    // result.push(recursiveCalculation(topics, []))
+
+    return result
+
+    // return recursivePermutation(topics, [])
 }
 
 const topics = ['3 5', '10101', '11110', '00010']
