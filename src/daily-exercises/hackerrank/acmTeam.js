@@ -35,7 +35,7 @@ const recursiveCalculation = (topics, result) => {
 const recursivePermutation = (topics, result) => {
     if(topics.length === 1) { return [].concat(...result) }
     else {
-        let topicsPermutation = topics 
+        let topicsPermutation = [...topics] 
         result.push(recursiveCalculation(topicsPermutation, []))
         topics.shift()
         return recursivePermutation(topics, result)
@@ -47,19 +47,7 @@ const acmTeam = (topics) => {
     const attendees = attAndTopics[0]
     const numTopics = attAndTopics[1]
     topics.shift()
-
-    //------ debug ------>>>>
-    let result = []
-    var topicsPermutation = [...topics]
-    console.log('topics before start: ' + topics)
-    result.push(recursiveCalculation(topicsPermutation, []))
-    console.log('topics after calc: ' + topics)
-    topics.shift()
-    console.log('topics after shift ' + topics)
-    return result
-    //------ debug ------<<<
-
-    // return recursivePermutation(topics, [])
+    return recursivePermutation(topics, [])
 }
 
 const topics = ['3 5', '10101', '11110', '00010']
