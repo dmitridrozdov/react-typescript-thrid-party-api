@@ -32,37 +32,26 @@ const recursiveCalculation = (topics, result) => {
     }
 }
 
-// const recursivePermutation = (topics, result) => {
-//     if(topics.length === 1) { return [].concat(...result) }
-//     else {
-//         let topicsPermutation = [...topics] 
-//         result.push(recursiveCalculation(topicsPermutation, []))
+// const recursivePermutationArray = (topics, result) => {    
+//     if(topics.length === 1) { 
+//         return result
+//     } else {
+//         result.push([...topics])
 //         topics.shift()
-//         return recursivePermutation(topics, result)
+//         return recursivePermutationArray(topics, result)
 //     }
 // }
 
-const recursivePermutationArray = (topics, result) => {    
-    if(topics.length === 1) { 
-        return result
-    } else {
-        result.push([...topics])
-        topics.shift()
-        return recursivePermutationArray(topics, result)
-    }
-}
-
-const acmTeam = (topics) => {
-    const attAndTopics = topics[0].split(' ')
+const acmTeam = (topic) => {
+    const attAndTopics = topic[0].split(' ')
     const attendees = attAndTopics[0]
     const numTopics = attAndTopics[1]
-    topics.shift()
-    // const arrayResult = recursivePermutation(topics, [])
-    const permutationArray = recursivePermutationArray(topics, [])
-    console.log('arrayResult: ' + arrayResult)
-    const maxAttendees = Math.max(...arrayResult)
+    topic.shift()
+    const permutationArray = recursiveCalculation(topic, [])
+    console.log('arrayResult: ' + permutationArray)
+    const maxAttendees = Math.max(...permutationArray)
     let count = 0
-    arrayResult.forEach(x => {
+    permutationArray.forEach(x => {
         if(x === maxAttendees) { count += 1 }
     });
     return [maxAttendees, count]
@@ -70,11 +59,4 @@ const acmTeam = (topics) => {
 
 // const topics = ['3 5', '10101', '11110', '00010']
 const topics = ['4 5', '10101', '11100', '11010', '00101']
-topics.shift()
-
-//console.log(acmTeam(topics))
-
-const permutationArray = recursivePermutationArray(topics, [])
-console.log(permutationArray)
-const arrayResult = permutationArray.map(x => recursiveCalculation(x, []))
-console.log(arrayResult)
+console.log(acmTeam(topics))
