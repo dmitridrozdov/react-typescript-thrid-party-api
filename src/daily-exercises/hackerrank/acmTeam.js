@@ -42,22 +42,15 @@ const recursivePermutation = (topics, result) => {
     }
 }
 
-const permutator = (inputArr) => {
-    let result = []
-    const permute = (arr, m = []) => {
-      if (arr.length === 0) {
-        result.push(m)
-      } else {
-        for (let i = 0; i < arr.length; i++) {
-          let curr = arr.slice()
-          let next = curr.splice(i, 1)
-          permute(curr.slice(), m.concat(next))
-       }
-     }
-   }
-   permute(inputArr)
-   return result
-  }
+const recursivePermutationArray = (topics, result) => {    
+    if(topics.length === 1) { 
+        return result
+    } else {
+        result.push([...topics])
+        topics.shift()
+        return recursivePermutationArray(topics, result)
+    }
+}
 
 const acmTeam = (topics) => {
     const attAndTopics = topics[0].split(' ')
@@ -77,7 +70,5 @@ const acmTeam = (topics) => {
 // const topics = ['3 5', '10101', '11110', '00010']
 const topics = ['4 5', '10101', '11100', '11010', '00101']
 topics.shift()
-console.log(permutator(topics))
+console.log(recursivePermutationArray(topics, []))
 //console.log(acmTeam(topics))
-
-// console.log(calculatePermutationForFirst(topics))
