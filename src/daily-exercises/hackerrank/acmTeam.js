@@ -32,15 +32,15 @@ const recursiveCalculation = (topics, result) => {
     }
 }
 
-const recursivePermutation = (topics, result) => {
-    if(topics.length === 1) { return [].concat(...result) }
-    else {
-        let topicsPermutation = [...topics] 
-        result.push(recursiveCalculation(topicsPermutation, []))
-        topics.shift()
-        return recursivePermutation(topics, result)
-    }
-}
+// const recursivePermutation = (topics, result) => {
+//     if(topics.length === 1) { return [].concat(...result) }
+//     else {
+//         let topicsPermutation = [...topics] 
+//         result.push(recursiveCalculation(topicsPermutation, []))
+//         topics.shift()
+//         return recursivePermutation(topics, result)
+//     }
+// }
 
 const recursivePermutationArray = (topics, result) => {    
     if(topics.length === 1) { 
@@ -57,7 +57,8 @@ const acmTeam = (topics) => {
     const attendees = attAndTopics[0]
     const numTopics = attAndTopics[1]
     topics.shift()
-    const arrayResult = recursivePermutation(topics, [])
+    // const arrayResult = recursivePermutation(topics, [])
+    const permutationArray = recursivePermutationArray(topics, [])
     console.log('arrayResult: ' + arrayResult)
     const maxAttendees = Math.max(...arrayResult)
     let count = 0
@@ -70,5 +71,10 @@ const acmTeam = (topics) => {
 // const topics = ['3 5', '10101', '11110', '00010']
 const topics = ['4 5', '10101', '11100', '11010', '00101']
 topics.shift()
-console.log(recursivePermutationArray(topics, []))
+
 //console.log(acmTeam(topics))
+
+const permutationArray = recursivePermutationArray(topics, [])
+console.log(permutationArray)
+const arrayResult = permutationArray.map(x => recursiveCalculation(x, []))
+console.log(arrayResult)
