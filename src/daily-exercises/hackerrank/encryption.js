@@ -1,11 +1,6 @@
-// const numCharsInWord = (s) => {
-//     const nChars = Math.ceil(Math.sqrt(s.length))
-//     return nChars
-// }
-
 const encryption = (s) => {
     const nChars = Math.ceil(Math.sqrt(s.length))
-    return s.match(/.{1,2}/g)
+    return s.match(new RegExp('.{1,' + nChars + '}', 'g'))
 }
 
 const s = 'haveaniceday'
