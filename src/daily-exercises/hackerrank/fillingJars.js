@@ -1,5 +1,6 @@
 const fillingJars = (n, operations) => {
-
+    let a = [...Array(n)].fill(0)
+    return a
 }
 
 const n = 5
