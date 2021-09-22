@@ -7,6 +7,7 @@ const fillJarsByRange = (arr, operation) => {
             return a + value
         } else return a
     })
+    // console.log(result)
     return result
 }
 
@@ -14,7 +15,10 @@ const recursiveFillJars = (arr, operations) => {
     if(operations.length === 0) { return arr }
     else {
         const newArr = fillJarsByRange(arr, operations[0])
-        return recursiveFillJars(newArr, operations.shift())
+        console.log('before shift: ' + operations)
+        operations.shift()
+        console.log('after shift: ' + operations)
+        return recursiveFillJars(newArr, operations)
     }
 }
 
