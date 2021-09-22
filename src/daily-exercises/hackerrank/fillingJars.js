@@ -39,7 +39,20 @@ function processData(input) {
     console.log(parseInt(Math.floor(avg)));
 }
 
+const fillingJars2 = (n, operations) => {
+    let sum = 0
+    for(let i = 0; i < operations.length; i++) {
+        let a = operations[i][0] //start index
+        let b = operations[i][1] //end index
+        let candies = operations[i][2]
+        sum += (b - a + 1) * candies
+    }
+    let avg = sum / n
+    return parseInt(Math.floor(avg))
+}
+
 const n = 5
 const operations = [[1, 2, 100], [2, 5, 100], [3, 4, 100]]
 
-console.log(fillingJars(n, operations))
+// console.log(fillingJars(n, operations))
+console.log(fillingJars2(n, operations))
