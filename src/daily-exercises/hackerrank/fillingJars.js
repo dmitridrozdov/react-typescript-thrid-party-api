@@ -1,13 +1,9 @@
 const fillJarsByRange = (arr, operation) => {
-    const startIndex = operation[0]
-    const endIndex = operation[1]
-    const value = operation[2]
     const result = arr.map((a, index) => {
-        if(index + 1 >= startIndex && index + 1 <= endIndex) {
-            return a + value
+        if(index + 1 >= operation[0] && index + 1 <= operation[1]) { //from start index to end index
+            return a + operation[2] //value
         } else return a
     })
-    // console.log(result)
     return result
 }
 
@@ -15,16 +11,15 @@ const recursiveFillJars = (arr, operations) => {
     if(operations.length === 0) { return arr }
     else {
         const newArr = fillJarsByRange(arr, operations[0])
-        console.log('before shift: ' + operations)
         operations.shift()
-        console.log('after shift: ' + operations)
         return recursiveFillJars(newArr, operations)
     }
 }
 
 const fillingJars = (n, operations) => {
     let arr = [...Array(n)].fill(0)
-    return recursiveFillJars(arr, operations)
+    const resultArray = recursiveFillJars(arr, operations) 
+    return Math.floor(resultArray.reduce((a, b) => a + b, 0) / n)
 }
 
 const n = 5
