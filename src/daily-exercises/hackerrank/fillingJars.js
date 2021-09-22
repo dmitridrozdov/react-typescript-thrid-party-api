@@ -10,12 +10,17 @@ const fillJarsByRange = (arr, operation) => {
     return result
 }
 
-const recursiveFillJars
+const recursiveFillJars = (arr, operations) => {
+    if(operations.length === 0) { return arr }
+    else {
+        const newArr = fillJarsByRange(arr, operations[0])
+        return recursiveFillJars(newArr, operations.shift())
+    }
+}
 
 const fillingJars = (n, operations) => {
-    let a = [...Array(n)].fill(0)
-    return fillJarsByRange(a, operations[1])
-
+    let arr = [...Array(n)].fill(0)
+    return recursiveFillJars(arr, operations)
 }
 
 const n = 5
