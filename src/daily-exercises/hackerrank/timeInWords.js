@@ -1,10 +1,11 @@
-var a = ['','one ','two ','three ','four ', 'five ','six ','seven ','eight ','nine ','ten ','eleven ','twelve ','thirteen ','fourteen ','fifteen ','sixteen ','seventeen ','eighteen ','nineteen ']
-var b = ['', '', 'twenty','thirty','forty','fifty', 'sixty','seventy','eighty','ninety']
+let a = ['','one ','two ','three ','four ', 'five ','six ','seven ','eight ','nine ','ten ','eleven ','twelve ','thirteen ','fourteen ','fifteen ','sixteen ','seventeen ','eighteen ','nineteen ']
+let b = ['', '', 'twenty','thirty','forty','fifty', 'sixty','seventy','eighty','ninety']
 
 const inWords = (num) => {
     if ((num = num.toString()).length > 9) return 'overflow'
     n = ('000000000' + num).substr(-9).match(/^(\d{2})(\d{2})(\d{2})(\d{1})(\d{2})$/)
-    if (!n) return; var str = '';
+    if (!n) return 
+    let str = ''
     str += (n[1] != 0) ? (a[Number(n[1])] || b[n[1][0]] + ' ' + a[n[1][1]]) + 'crore ' : ''
     str += (n[2] != 0) ? (a[Number(n[2])] || b[n[2][0]] + ' ' + a[n[2][1]]) + 'lakh ' : ''
     str += (n[3] != 0) ? (a[Number(n[3])] || b[n[3][0]] + ' ' + a[n[3][1]]) + 'thousand ' : ''
@@ -14,9 +15,11 @@ const inWords = (num) => {
 }
 
 const timeInWords = (h, m) => {
-    return inWords(13)
+    if(m === 0) { return inWords(h) + 'o\' clock' }
+    else if(m === 15) { return 'quarter past ' + inWords(h) }
+    return 'undefined'
 }
 
-const h = 5
-const m = 15
-console.log(timeInWords(h,m))
+
+const testCases = [[5, 0], [5, 15]]
+testCases.forEach((time) => console.log(timeInWords(h[0], h[1]))
