@@ -15,18 +15,15 @@ const inWords = (num) => {
 }
 
 const timeInWords = (h, m) => {
-    // if(m === 0) { return inWords(h) + 'o\' clock' }
-    // else if(m === 15) { return 'quarter past ' + inWords(h) }
-    // else if(m === 30) { return 'half past ' + inWords(h) }
-    // return 'undefined'
-    switch(m) {
-        case 0: return inWords(h) + 'o\' clock'
-        case 15: return 'quarter past ' + inWords(h)
-        case 30: return 'half past ' + inWords(h)
+    switch(true) {
+        case (m === 0): return inWords(h) + 'o\' clock'
+        case (m === 15): return 'quarter past ' + inWords(h)
+        case (m === 30): return 'half past ' + inWords(h)
+        case (m < 30): return 'hello'
         default: return 'undefined'
       }
 }
 
 
-const testCases = [[5, 0], [5, 15], [5, 30]]
+const testCases = [[5, 0], [5, 15], [5, 30], [5, 1]]
 testCases.forEach((time) => console.log(timeInWords(time[0], time[1])))
