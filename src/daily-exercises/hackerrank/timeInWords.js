@@ -15,10 +15,16 @@ const inWords = (num) => {
 }
 
 const timeInWords = (h, m) => {
-    if(m === 0) { return inWords(h) + 'o\' clock' }
-    else if(m === 15) { return 'quarter past ' + inWords(h) }
-    else if(m === 30) { return 'half past ' + inWords(h) }
-    return 'undefined'
+    // if(m === 0) { return inWords(h) + 'o\' clock' }
+    // else if(m === 15) { return 'quarter past ' + inWords(h) }
+    // else if(m === 30) { return 'half past ' + inWords(h) }
+    // return 'undefined'
+    switch(m) {
+        case 0: return inWords(h) + 'o\' clock'
+        case 15: return 'quarter past ' + inWords(h)
+        case 30: return 'half past ' + inWords(h)
+        default: return 'undefined'
+      }
 }
 
 
