@@ -10,10 +10,16 @@ let isFiboPavol = n => {
     return "IsNotFibo"
 }
 
+const isPerfectSquare = (n) => {
+    return Number.isInteger(Math.sqrt(n))
+}
+
 const isFibo = (n) => {
-    const result = Math.sqrt(5 * n * n + 4)
-    const result1 = Math.sqrt(5 * n * n - 4)
-    return [Number.isInteger(result), Number.isInteger(result1)]
+    if(isPerfectSquare(5 * n * n + 4) || isPerfectSquare(5 * n * n - 4)) {
+        return 'IsFibo'
+    } else {
+        return 'IsNotFibo'
+    }
 }
 
 const n = 8
