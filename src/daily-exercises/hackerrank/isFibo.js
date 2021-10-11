@@ -11,10 +11,11 @@ let isFiboPavol = n => {
 }
 
 const isFibo = (n) => {
-    const result = Math.sqrt(5 * n) - 4
-    return result
+    const result = Math.sqrt(5 * n * n + 4)
+    const result1 = Math.sqrt(5 * n * n - 4)
+    return [Number.isInteger(result), Number.isInteger(result1)]
 }
 
-const n = 11
+const n = 8
 console.log(isFibo(n))
 console.log(isFiboPavol(n))
