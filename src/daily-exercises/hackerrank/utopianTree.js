@@ -1,14 +1,10 @@
 const utopianTree = (n) => {
     let res = 1
     for(let i = 1; i <= n; i++) {
-        if(i%2 === 0) {
-            console.log(i + ' is even')
-        } else {
-            console.log(i + ' is odd')
-        }
+        if(i%2 === 0) { res += 1 } else { res *= 2 }
     }
-    return 'hevy metal'
+    return res
 }
 
-const n = 5
+const n = 1
 console.log(utopianTree(n))
