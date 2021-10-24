@@ -6,5 +6,5 @@ const utopianTree = (n) => {
     return res
 }
 
-const n = 1
+const n = 60
 console.log(utopianTree(n))
