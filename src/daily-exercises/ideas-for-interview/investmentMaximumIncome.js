@@ -21,33 +21,39 @@
 // }; 
 
 
-// function solution(A) {
-//     const MOD = 1000000000;
-//     let income = A[0]; // initially sell
-//     for (let i = 1; i < A.length; i++) {
-//         if (A[i] > A[i-1]) {
-//             income += (A[i] - A[i-1]);
-//         }
-//     }
-//     return income % MOD;
-// }
-
-
-function solution(prices) {
-    let maxProfit = 0;
-    let minPrice = Infinity;
-
-    for (let i = 0; i < prices.length; i++) {
-        if (prices[i] < minPrice) {
-            minPrice = prices[i];
-        } else if (prices[i] > minPrice) {
-            maxProfit += prices[i] - minPrice;
-            minPrice = prices[i]; // Reset minPrice for the next potential transaction
+function solution(A) {
+    const MOD = 1000000000;
+    let income = A[0]; // initially sell
+    for (let i = 1; i < A.length; i++) {
+        if (A[i] > A[i-1]) {
+            income += (A[i] - A[i-1]);
         }
     }
-
-    return maxProfit;
+    return income % MOD;
 }
+
+
+// function solution(A) {
+//     const MOD = 1000000000;
+    
+//     let income = A[0]; // we sell the first day
+//     let hasAsset = false; // after selling we are empty
+
+//     for (let i = 1; i < A.length; i++) {
+//         if (!hasAsset && A[i] < A[i-1]) {
+//             // price dropped and we don't have asset => buy it
+//             income -= A[i];
+//             hasAsset = true;
+//         } else if (hasAsset && A[i] > A[i-1]) {
+//             // price is rising and we have asset => sell it
+//             income += A[i];
+//             hasAsset = false;
+//         }
+//         // if prices stay flat, do nothing
+//     }
+
+//     return income % MOD;
+// }
 
 // Examples:
 const A1 = [4, 1, 2, 3];
