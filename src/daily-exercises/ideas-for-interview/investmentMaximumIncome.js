@@ -60,6 +60,38 @@ function solutionClaude1(A) {
     return totalIncome;
 }
 
+function solution(A) {
+    if (!A || A.length <= 1) {
+        return 0;
+    }
+
+    const MOD = 1000000000;
+    let maxIncome = 0;
+    
+    // We start with one asset and can hold at most one at a time
+    // We need to find the maximum profit strategy
+    
+    // We can model this as a series of buy-sell transactions
+    // Start by selling the initial asset, then do buy-sell pairs
+    let cash = A[0]; // Cash after selling the initial asset
+    
+    for (let i = 1; i < A.length; i++) {
+        // When we see a local minimum followed by a rise, that's a good buy point
+        // When we see a local maximum before a fall, that's a good sell point
+        
+        // If current price is higher than previous, we could have bought at previous price and sold now
+        if (A[i] > A[i-1]) {
+            // We buy at previous price and sell at current price
+            cash = (cash - A[i-1] + A[i]) % MOD;
+            if (cash > maxIncome) {
+                maxIncome = cash;
+            }
+        }
+    }
+    
+    return maxIncome;
+}
+
 // Examples:
 const A1 = [4, 1, 2, 3];
 console.log(solution(A1)); // Output: 6
