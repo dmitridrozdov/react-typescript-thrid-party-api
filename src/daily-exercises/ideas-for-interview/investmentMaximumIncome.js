@@ -21,7 +21,7 @@
 // }; 
 
 
-function solution(A) {
+function solutionGPT(A) {
     const MOD = 1000000000;
     let income = A[0]; // initially sell
     for (let i = 1; i < A.length; i++) {
@@ -33,27 +33,32 @@ function solution(A) {
 }
 
 
-// function solution(A) {
-//     const MOD = 1000000000;
+function solutionClaude1(A) {
+    if (!A || A.length <= 1) {
+        return 0;
+    }
+
+    const MOD = 1000000000;
+    let totalIncome = 0;
+    let currentHolding = A[0]; // Start with holding the asset
     
-//     let income = A[0]; // we sell the first day
-//     let hasAsset = false; // after selling we are empty
+    // Strategy: Whenever we see a price drop, sell before the drop and buy after
+    // Whenever we see a price increase, keep the asset to sell at the higher price
+    for (let i = 1; i < A.length; i++) {
+        // If price increases, we want to sell at this higher price
+        if (A[i] > currentHolding) {
+            // Sell at current price and get income
+            totalIncome = (totalIncome + A[i] - currentHolding) % MOD;
+            currentHolding = A[i]; // Buy back immediately at the same price
+        } else if (A[i] < currentHolding) {
+            // If price drops, sell before the drop and buy at lower price
+            currentHolding = A[i]; // Sell previously and buy at this lower price
+        }
+        // If the price is the same, we don't need to do anything
+    }
 
-//     for (let i = 1; i < A.length; i++) {
-//         if (!hasAsset && A[i] < A[i-1]) {
-//             // price dropped and we don't have asset => buy it
-//             income -= A[i];
-//             hasAsset = true;
-//         } else if (hasAsset && A[i] > A[i-1]) {
-//             // price is rising and we have asset => sell it
-//             income += A[i];
-//             hasAsset = false;
-//         }
-//         // if prices stay flat, do nothing
-//     }
-
-//     return income % MOD;
-// }
+    return totalIncome;
+}
 
 // Examples:
 const A1 = [4, 1, 2, 3];
@@ -65,14 +70,16 @@ console.log(solution(A2)); // Output: 7
 const A3 = [1000000000, 1, 2, 2, 1000000000, 1, 1000000000];
 console.log(solution(A3)); // Output: 999999998
 
-// const A4 = [1, 5];
-// console.log(solution(A4)); // Output: 4
+console.log('additional test cases');
 
-// const A5 = [5, 1];
-// console.log(solution(A5)); // Output: 0
+const A4 = [1, 5];
+console.log(solution(A4)); // Output: 4
 
-// const A6 = [1, 2, 3, 4, 5];
-// console.log(solution(A6)); // Output: 4
+const A5 = [5, 1];
+console.log(solution(A5)); // Output: 0
 
-// const A7 = [5, 4, 3, 2, 1];
-// console.log(solution(A7)); // Output: 0
+const A6 = [1, 2, 3, 4, 5];
+console.log(solution(A6)); // Output: 4
+
+const A7 = [5, 4, 3, 2, 1];
+console.log(solution(A7)); // Output: 0
