@@ -60,7 +60,7 @@ function solutionClaude1(A) {
     return totalIncome;
 }
 
-function solution(A) {
+function solutionClaude2(A) {
     if (!A || A.length <= 1) {
         return 0;
     }
@@ -91,6 +91,43 @@ function solution(A) {
     
     return maxIncome;
 }
+
+function solution(A) {
+    if (!A || A.length <= 1) {
+        return 0;
+    }
+
+    const MOD = 1000000000;
+    
+    // We start with one asset (we need to sell it first to get any income)
+    // After selling, we can buy again (but can hold at most one at a time)
+    
+    // Let's track two states:
+    // 1. cash - Maximum cash if we start by selling the asset we have
+    // 2. holding - Maximum value if we're currently holding an asset
+    
+    // Initialize: We start with one asset, so holding = 0 (no profit yet)
+    // Initially we have no cash, so cash = 0
+    let cash = 0;
+    let holding = 0;
+    
+    for (let i = 0; i < A.length; i++) {
+        // If we have cash, we can either keep it or buy an asset
+        // If we buy an asset, we'll have: cash - current price
+        let prevCash = cash;
+        
+        // If we're holding an asset, we can either keep it or sell it
+        // If we sell it, we'll have: holding + current price
+        cash = Math.max(cash, holding + A[i]);
+        
+        // Update holding: either keep current holding or buy a new asset
+        holding = Math.max(holding, prevCash - A[i]);
+    }
+    
+    // At the end, we want to have cash, not be holding an asset
+    return cash % MOD;
+}
+
 
 // Examples:
 const A1 = [4, 1, 2, 3];
