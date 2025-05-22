@@ -33,7 +33,7 @@ function solutionGPT(A) {
 }
 
 
-function solutionClaude1(A) {
+function solution(A) {
     if (!A || A.length <= 1) {
         return 0;
     }
@@ -92,7 +92,7 @@ function solutionClaude2(A) {
     return maxIncome;
 }
 
-function solution(A) {
+function solutionClaude3(A) {
     if (!A || A.length <= 1) {
         return 0;
     }
@@ -128,6 +128,50 @@ function solution(A) {
     return cash % MOD;
 }
 
+
+function solutionClaude4(A) {
+    if (!A || A.length <= 1) {
+        return 0;
+    }
+
+    const MOD = 1000000000;
+    let maxIncome = 0;
+    
+    // Based on the examples:
+    // 1. You start with one asset (you don't buy it, you already have it)
+    // 2. You can sell and buy multiple times to maximize profit
+    // 3. You need to sell before buying again (can hold at most one at a time)
+    
+    // We'll use dynamic programming with two states:
+    // - withAsset[i]: maximum income on day i if we're holding an asset
+    // - withoutAsset[i]: maximum income on day i if we're not holding an asset
+    
+    const n = A.length;
+    const withAsset = Array(n).fill(0);
+    const withoutAsset = Array(n).fill(0);
+    
+    // Initialize: on day 0, we have the asset but no income yet
+    withAsset[0] = 0;
+    // If we sell on day 0, we get A[0] income
+    withoutAsset[0] = A[0];
+    
+    for (let i = 1; i < n; i++) {
+        // If we have the asset on day i, either:
+        // 1. We had it on day i-1 and kept it, or
+        // 2. We didn't have it on day i-1 but bought it, spending A[i]
+        withAsset[i] = Math.max(withAsset[i-1], withoutAsset[i-1] - A[i]);
+        
+        // If we don't have the asset on day i, either:
+        // 1. We didn't have it on day i-1 and kept it that way, or
+        // 2. We had it on day i-1 but sold it, earning A[i]
+        withoutAsset[i] = Math.max(withoutAsset[i-1], withAsset[i-1] + A[i]);
+        
+        // Update max income (it's always better to end without an asset)
+        maxIncome = Math.max(maxIncome, withoutAsset[i]);
+    }
+    
+    return maxIncome % MOD;
+}
 
 // Examples:
 const A1 = [4, 1, 2, 3];
