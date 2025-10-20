@@ -44,6 +44,6 @@
   },
   "devDependencies": {
     "cypress": "^4.12.1",
-    "playwright": "^1.11.1"
+    "playwright": "^1.55.1"
   }
 }
